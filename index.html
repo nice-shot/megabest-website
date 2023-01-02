@@ -9,6 +9,7 @@
 -->
 
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>מגה בסט סלולר</title>
@@ -16,6 +17,10 @@
     @font-face {
       font-family: myFirstFont;
       src: url(stopmotiondecember11-webfont.ttf);
+    }
+
+    body {
+      cursor: url('cursor_small.png'), auto;
     }
 
     .wrapper {
@@ -63,7 +68,8 @@
 
 <body background='tile.png'>
   <audio id="audio" src="EP02-MegabestLoop-V01.mp3" loop></audio>
-  <button id="audio-button" onclick="playAudio()"><img src="volume-up-fill.svg"></button>
+  <button id="audio-button" onclick="playAudio()" style="cursor:url('cursor_small.png'), auto;"><img
+      src="volume-up-fill.svg"></button>
   <script>
     function playAudio() {
       var audio = document.getElementById("audio");
@@ -114,4 +120,5 @@
   <img src="fire.gif" style="display:block; margin:auto;">
   <img src="head.gif" style="width: 170px; display:block; margin:auto;">
 </body>
+
 </html>
