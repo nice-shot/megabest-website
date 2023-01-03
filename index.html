@@ -19,9 +19,13 @@
       src: url(stopmotiondecember11-webfont.ttf);
     }
 
-    html {
+    /* * {
       cursor: url('cursor_small.png'), auto;
-    }
+    } */
+
+    /* button {
+      cursor: url('cursor_small.png'), auto;
+    } */
 
     .wrapper {
       max-width: 100%;
@@ -63,6 +67,24 @@
     #audio-button>img {
       width: 50px
     }
+
+    #faceboard {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #faceboard>button {
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 125px;
+      display: block;
+    }
+
+    #faceboard>button>img {
+      width: inherit;
+    }
   </style>
 </head>
 
@@ -77,24 +99,10 @@
 </script>
 
 <body background='tile.png'>
-  <audio id="audio" src="EP02-MegabestLoop-V01.mp3" loop></audio>
-  <button id="audio-button" onclick="playAudio()" style="cursor:url('cursor_small.png'), auto;"><img
+  <audio id="background-music" src="EP02-MegabestLoop-V01.mp3" loop></audio>
+  <audio id="recording-audio"></audio>
+  <button id="audio-button" onclick="playBackgroundMusic()"><img
       src="volume-up-fill.svg"></button>
-  <script>
-    function playAudio() {
-      var audio = document.getElementById("audio");
-      var button = document.getElementById("audio-button")
-      var buttonImg = button.firstChild;
-      if (audio.paused) {
-        audio.play();
-        buttonImg.src = "volume-off-vibrate-fill.svg";
-      } else {
-        audio.pause();
-        buttonImg.src = "volume-up-fill.svg";
-      }
-    }
-  </script>
-
   <table style="width:100%; object-fit: contain; display:block; margin:auto;">
     <tr>
       <td><img src="battery.gif"
@@ -121,7 +129,89 @@
   </div>
   <br> <br>
   <img src="fire.gif" style="display:block; margin:auto;">
-  <img src="faces.gif" style="max-width: 200px; width: 100%; display:block; margin:auto;">
+  <div id="faceboard">
+    <button id="002_energydrink" onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Smile.png">
+    </button>
+    <button id="003_tradein"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Blink.png">
+    </button>
+    <button id="004_internet" onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Cocky-02.png">
+    </button>
+    <button id="005_GAMERZ"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Confused.png">
+    </button>
+    <button id="006_bathwater"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-EvilSmile-01.png">
+    </button>
+    <button id="007_elctropowder"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-EvilSmile-02.png">
+    </button>
+    <button id="008_stonks"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Laugh.png">
+    </button>
+    <button id="008_winphone"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Smile.png">
+    </button>
+    <button id="009_toster"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Surprised.png">
+    </button>
+    <button id="010_plans"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Unsure.png">
+    </button>
+    <button id="011_buy"  onclick="playSound(this.id)">
+      <img src="faces/YardenFace-Worried.png">
+    </button>
+  </div>
+  <!-- <img src="faces.gif" style="max-width: 200px; width: 100%; display:block; margin:auto;"> -->
+  <script>
+    function docReady(fn) {
+      // see if DOM is already available
+      if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+      } else {
+        document.addEventListener("DOMContentLoaded", fn);
+      }
+    }
+
+    function playBackgroundMusic() {
+      var audio = document.getElementById("background-music");
+      var button = document.getElementById("audio-button")
+      var buttonImg = button.firstChild;
+      if (audio.paused) {
+        audio.play();
+        buttonImg.src = "volume-off-vibrate-fill.svg";
+      } else {
+        audio.pause();
+        buttonImg.src = "volume-up-fill.svg";
+      }
+    }
+
+    function playSound(soundName) {
+      var audio = document.getElementById("recording-audio");
+      if (!audio.paused)
+      {
+        audio.pause();
+      }  
+      audio.src = "recordings/" + soundName + ".mp3";
+      audio.play();
+    }
+
+    // function setUpImages() {
+    //   var faceboard = document.getElementById("faceboard");
+    //   console.log("setting up images");
+    //   for (var i=0; i < faceboard.children.length; i++)
+    //   {
+    //     var button = faceboard.children[i];
+    //     button.onclick = () => {
+    //       console.log("Button " + button.id + " clicked.");
+    //     }
+    //   }
+    // }
+    // docReady(setUpImages);
+  </script>
 </body>
 
 </html>
