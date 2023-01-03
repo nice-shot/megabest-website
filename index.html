@@ -19,9 +19,9 @@
       src: url(stopmotiondecember11-webfont.ttf);
     }
 
-    /* * {
+    * {
       cursor: url('cursor_small.png'), auto;
-    } */
+    }
 
     /* button {
       cursor: url('cursor_small.png'), auto;
@@ -57,6 +57,12 @@
         transform: translate3d(-50%, 0, 0);
       }
     }
+    
+    .invisible-button {
+      background: transparent;
+      border: none;
+      outline: none;
+    }
 
     #audio-button {
       height: 80px;
@@ -72,6 +78,7 @@
       margin-top: 50px;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     #faceboard>button {
@@ -84,6 +91,10 @@
 
     #faceboard>button>img {
       width: inherit;
+    }
+
+    #faceboard>button:nth-child(even)>img {
+      transform: scaleX(-1);
     }
   </style>
 </head>
@@ -105,9 +116,15 @@
       src="volume-up-fill.svg"></button>
   <table style="width:100%; object-fit: contain; display:block; margin:auto;">
     <tr>
-      <td><img src="battery.gif"
-          style="width: 100%; object-fit: contain; display:block; margin:auto;"></td>
-      <td width="65%"><img src="logo.png" style="max-width: 1000px; width: 100%;display:block; margin:auto;"></td>
+      <td>
+          <img src="battery.gif"
+            style="width: 100%; object-fit: contain; display:block; margin:auto;" />
+      </td>
+      <td width="65%">
+        <button class="invisible-button" id="001_WELCOME" onclick="playSound(this.id)">
+          <img src="logo.png" style="max-width: 1000px; width: 100%;display:block; margin:auto;">
+        </button>
+      </td>
       <td><img src="laptop.gif"
           style="width: 100%; object-fit: contain;  display:block; margin:auto;"></td>
     </tr>
