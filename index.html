@@ -220,6 +220,19 @@
       audio.play();
     }
 
+    function loadAssets() {
+      var faceboard = document.getElementById("faceboard");
+      for (var i=0; i < faceboard.children.length; i++) {
+        var button = faceboard.children[i];
+        var audio = new Audio("recordings/" + button.id + ".mp3");
+        console.log("Loading audio: " + audio.src);
+      }
+      var welcomeAudio = new Audio("recordings/001_WELCOME.mp3");
+      var bgAudio = new Audio("EP02-MegabestLoop-V01.mp3");
+      var volumeImage = new Image();
+      volumeImage.src = "volume-off-vibrate-fill.svg";
+    }
+
     // function setUpImages() {
     //   var faceboard = document.getElementById("faceboard");
     //   console.log("setting up images");
@@ -232,6 +245,8 @@
     //   }
     // }
     // docReady(setUpImages);
+
+    window.onload = loadAssets;
   </script>
 </body>
 
